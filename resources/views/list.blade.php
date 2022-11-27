@@ -22,6 +22,8 @@
         <td>{{$student->dob}}</td>
         <td>{{$student->address}}</td>
         <td><img src="{{asset($student->img)}}" height="60px" width="60px" alt=""></td>
+        <td><a href="{{url('edit/'.$student->id)}}">Edit</a> </td>
+        <td><a href="{{url('delete/'.$student->id)}}">Delete</a> </td>
     </tr>
     @endforeach
 </table>

@@ -26,5 +26,12 @@ Route::get("/create",[\App\Http\Controllers\PagesController::class,'create' ]);
 Route::post("/create",[\App\Http\Controllers\PagesController::class,'store' ]);
 Route::get("/list",[\App\Http\Controllers\PagesController::class,'list' ]);
 Route::get("/hello",[\App\Http\Controllers\PagesController::class,'new' ]);
+Route::get("/delete/{id}",[\App\Http\Controllers\PagesController::class,'delete' ]);
+Route::get("edit/{id}",[\App\Http\Controllers\PagesController::class,'edit' ]);
+Route::post("update",[\App\Http\Controllers\PagesController::class,'update' ]);
+Route::get("signUp",[\App\Http\Controllers\PagesController::class,'signUp' ]);
+Route::post("signUpForm",[\App\Http\Controllers\PagesController::class,'signUpForm' ]);
+
+
 
 
