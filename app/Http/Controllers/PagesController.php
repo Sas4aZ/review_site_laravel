@@ -99,11 +99,12 @@ class PagesController extends Controller
     }
 
     public function signUpForm(Request $request) {
+
         $user = new User();
         $user->email = $request->email;
-        $user->password = $request-> name;
+        $user->name = $request-> name;
         $user->password=Hash::make($request->password);
-        $user->name = "user" ;
+
         $user->save();
 
     }

@@ -5,65 +5,122 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{asset("assets/css/new_wala.css")}}" rel="stylesheet" />
-    <script src="{{asset("assets/js/bootstrap.bundle.min.js")}}"></script>
+    <link href="{{asset("assets/css/new_wala.css")}} " rel="stylesheet" />
+    <script src="{{asset("assets/js/bootstrap.bundle.min.js")}} "></script>
 
-    <title>Login</title>
 
-    <link href="{{asset("assets/css/signin.css")}}" rel="stylesheet">
+    <title>sign up</title>
 </head>
+<body>
 
-<body class="text-center">
+<div class="b-example-divider"></div>
+<div class="row align-items-center">
+    <div class="col-sm-7 mx-auto col-lg-7">
 
-<main class="form-signin">
-    <form action="{{action([\App\Http\Controllers\PagesController::class,'signUpForm'])}}" method="post">
-        @csrf
-        <img class="mb-4" src="{{asset("assets/images/book.svg")}}" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <form class="p-4 p-md-5 border rounded-3 bg-light row g-3 " action="{{action([\App\Http\Controllers\PagesController::class,'signUpForm'])}}" method="post" enctype="multipart/form-data">
+           @csrf
+            <h3>Sign Up</h3>
+            <hr>
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" required class="form-control"  id="floatingUsername"  name="name" placeholder="Username">
+                    <label for="floatingUsername">Username</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
 
-        <div class="form-floating">
-            <input type="email" value="" required class="form-control " id="floatingInput" name="email" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-            <div class="valid-feedback">
-                Looks good!
+                    </div>
+                </div>
             </div>
-            <div class="invalid-feedback">
+
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" required class="form-control "  name="first_name" id="first_name" placeholder="First Name">
+                    <label for="first_name">First Name</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" required class="form-control "  name="last_name" id="last_name" placeholder="Last name">
+                    <label for="last_name">Last name</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="email" required class="form-control "  id="floatingEmail" name="email" placeholder="name@example.com">
+                    <label for="floatingEmail">Email address</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="password" required class="form-control"  id="floatingPassword" name="password" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+
+                    </div>
+                </div>
 
             </div>
-        </div>
-        </div>
-        <div class="form-floating">
-            <input type="password" class="form-control  "  required value="" id="floatingPassword" name="password" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="password" required class="form-control"   id="floatingPassword2" name="confirm_password" placeholder="Re-enter password">
+                    <label for="floatingPassword2">Re-enter Password</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
 
-        </div>
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="w-100 mb-3 btn btn-lg btn-primary" type="submit">Sign in</button>
+                    </div>
+                </div>
+            </div>
 
 
-    </form>
-    <div class="row">
-        <div class="col"> <a href="registration/register.php"> <button class="w-100 btn btn-lg btn-secondary">Register</button></a>
-        </div>
-        <div class="col">
-            <a href="google_login/google_login.php">
-                <button type="button" class="w-100 btn btn-lg btn-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
-                        <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"></path>
-                    </svg>
-                    login
-                </button>
+            <div class="col-12">
+            </div>
+
+
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+
+            </div>
+            <div class="col-md-6"><a href="google_login/google_login.php"> <button class="btn btn-secondary">Google login </button></a>
+                <a href="../index.php" <button type="button" class="btn btn-secondary">Already have an account? </button> </a></div>
 
 
 
-            </a>
-        </div>
+        </form>
     </div>
-</main>
+</div>
+
+
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</html>
+
+
+
