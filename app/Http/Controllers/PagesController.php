@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
@@ -108,6 +109,20 @@ class PagesController extends Controller
         $user->save();
 
     }
+    public function login() {
+        return view("login");
+    }
+
+public function loginForm(Request $request) {
+        $credentials = [
+            'email'=> $request->email,
+        'password'=> $request->password
+        ];
+        if(Auth::attempt($credentials)){
+            return redirect('/list'); } else{
+return 'wrong credentials';
+            }
+        }
 
 
 

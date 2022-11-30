@@ -18,7 +18,7 @@
 <body class="text-center">
 
 <main class="form-signin">
-    <form action="{{action([\App\Http\Controllers\PagesController::class,'signUpForm'])}}" method="post">
+    <form action="{{action([\App\Http\Controllers\PagesController::class,'loginForm'])}}" method="post">
         @csrf
         <img class="mb-4" src="{{asset("assets/images/book.svg")}}" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>

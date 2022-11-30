@@ -31,6 +31,8 @@ Route::get("edit/{id}",[\App\Http\Controllers\PagesController::class,'edit' ]);
 Route::post("update",[\App\Http\Controllers\PagesController::class,'update' ]);
 Route::get("signUp",[\App\Http\Controllers\PagesController::class,'signUp' ]);
 Route::post("signUpForm",[\App\Http\Controllers\PagesController::class,'signUpForm' ]);
+Route::get("login",[\App\Http\Controllers\PagesController::class,'login' ]);
+Route::post("loginForm",[\App\Http\Controllers\PagesController::class,'loginForm' ]);
 
 
 
