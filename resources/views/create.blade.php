@@ -8,6 +8,11 @@
     <title>Document</title>
 </head>
 <body>
+@if($errors-> any())
+    @foreach($errors->all() as $errors)
+        {{$error}}
+    @endforeach
+@endif
 <form action="{{action([\App\Http\Controllers\PagesController::class,'store'])}}" method="post" enctype="multipart/form-data">
     @csrf
     <label >Name</label>

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DraftMail;
+use App\Models\Review;
 use App\Models\student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 
 
@@ -30,6 +33,12 @@ class PagesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=> 'required',
+            'age'=>'required',
+            'location'=>'required|max:20',
+            'dob'=>'required'
+        ]) ;
         $student = new Student();
         $student->name = $request->name;
         $student->address = $request->address;
@@ -107,25 +116,75 @@ class PagesController extends Controller
         $user->password=Hash::make($request->password);
 
         $user->save();
-
+        Mail::to($request->email)->send(new DraftMail($request->name, $user->id));
+    }
+    public function activateUser($id) {
+        User::where('id',$id)->update(['active'=>1]);
+        return redirect('login') ;
     }
     public function login() {
         return view("login");
     }
-
+public function dashboard() {
+        Mail::to('paudelsashwat16@gmail.com')->send(new DraftMail('Sashwat'));
+        $data   = [
+            'name' => 'Sas',
+            'age' => 8324
+        ] ;
+        return view('new');
+}
 public function loginForm(Request $request) {
         $credentials = [
             'email'=> $request->email,
         'password'=> $request->password
         ];
         if(Auth::attempt($credentials)){
-            return redirect('/list'); } else{
-return 'wrong credentials';
+            if (Auth::user()->active==0) {
+                Auth::logout();
+                return redirect('login') ;
             }
+            return redirect('/list');
         }
+        else{
+            return 'wrong credentials';
+        }
+        }
+        public function test () {
+        return view('test');
+        }
+        public function post () {
+        return view('review_post');
+        }
+public function review_show() {
+    $rev = Review::get();
+    return view("review_show")->with("rev", $rev);
 
+}
+public function review_view($id) {
 
+}
+public function logout() {
+        Auth::logout();
+        return view('login');
+}
+        public function review_post(Request $request) {
+            $rev = new Review();
+            $rev->review_name = $request->review_name;
+            $rev->review_foreword = $request->review_foreword;
+            $rev->review_description = $request->review_description;
+            $rev->user_id = Auth::id();
 
+            $filenamewithExt = $request->file("image")->getClientOriginalName();
+            $filename = pathinfo($filenamewithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $filenameToStore = $filename . "_" . time() . "." . $extension;
+            $img = Image::make($request->file("image"));
+            $img->save("storage/image/" . $filenameToStore);
+            $rev->review_image = "storage/image/" . $filenameToStore;
+
+            $rev->save();
+            return redirect('review_show') ;
+        }
 }
 
 
