@@ -33,6 +33,7 @@ Route::post("/create",[\App\Http\Controllers\PagesController::class,'store' ]);
 Route::get("/list",[\App\Http\Controllers\PagesController::class,'list' ]);
 Route::get("/hello",[\App\Http\Controllers\PagesController::class,'new' ]);
 Route::get("/delete/{id}",[\App\Http\Controllers\PagesController::class,'delete' ]);
+Route::get("/activate/{id}",[\App\Http\Controllers\PagesController::class,'activateUser' ]);
 Route::get("edit/{id}",[\App\Http\Controllers\PagesController::class,'edit' ]);
 Route::post("update",[\App\Http\Controllers\PagesController::class,'update' ]);
 Route::get("signUp",[\App\Http\Controllers\PagesController::class,'signUp' ]);
@@ -42,7 +43,8 @@ Route::get("test",[\App\Http\Controllers\PagesController::class,'test' ]);
 Route::get("post",[\App\Http\Controllers\PagesController::class,'post' ]);
 Route::post("review_post",[\App\Http\Controllers\PagesController::class,'review_post' ]);
 Route::post("loginForm",[\App\Http\Controllers\PagesController::class,'loginForm' ]);
-Route::get("/review_show",[\App\Http\Controllers\PagesController::class,'review_show' ]);
+Route::get("show",[\App\Http\Controllers\PagesController::class,'review_show' ]);
+Route::get("logout",[\App\Http\Controllers\PagesController::class,'logout' ]);
 
 
 

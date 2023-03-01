@@ -126,10 +126,10 @@ class PagesController extends Controller
         return view("login");
     }
 public function dashboard() {
-        Mail::to('paudelsashwat16@gmail.com')->send(new DraftMail('Sashwat'));
+        Mail::to('paudelsashwat16@gmail.com')->send(new DraftMail('Sashwat',1));
         $data   = [
             'name' => 'Sas',
-            'age' => 8324
+            'user_id' => 8324
         ] ;
         return view('new');
 }
@@ -143,7 +143,7 @@ public function loginForm(Request $request) {
                 Auth::logout();
                 return redirect('login') ;
             }
-            return redirect('/list');
+            return redirect('show');
         }
         else{
             return 'wrong credentials';
@@ -153,11 +153,11 @@ public function loginForm(Request $request) {
         return view('test');
         }
         public function post () {
-        return view('review_post');
+        return view('reviews/review_post');
         }
 public function review_show() {
     $rev = Review::get();
-    return view("review_show")->with("rev", $rev);
+    return view("reviews/review_show")->with("rev", $rev);
 
 }
 public function review_view($id) {
@@ -183,7 +183,7 @@ public function logout() {
             $rev->review_image = "storage/image/" . $filenameToStore;
 
             $rev->save();
-            return redirect('review_show') ;
+            return redirect('show') ;
         }
 }
 

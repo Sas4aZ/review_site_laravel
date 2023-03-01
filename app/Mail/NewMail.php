@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class DraftMail extends Mailable
+class NewMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,11 +16,9 @@ class DraftMail extends Mailable
      *
      * @return void
      */
-    public function __construct($name,$user_id )
+    public function __construct()
     {
-        $this->name = $name;
-        $this->user_id = $user_id;
-
+        //
     }
 
     /**
@@ -30,11 +28,6 @@ class DraftMail extends Mailable
      */
     public function build()
     {
-        $data = [
-            'name'=>$this->name,
-            'user_id'=>$this->user_id
-        ];
-
-        return $this->view('dashboard')->subject('Project | Registration')->with($data);
+        return $this->view('view.name');
     }
 }

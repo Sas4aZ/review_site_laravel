@@ -16,7 +16,7 @@
 
                     <div class="card-body">
                         <h5 class="card-title"> {{$revs->review_name }}</h5>
-                        <p class="card-text">By  </p>
+                        <p class="card-text">By {{$revs->user->name}}  </p>
                         <p class="card-text"> {{$revs->review_foreword}} </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">

@@ -10,9 +10,6 @@
 <body>
 <p>Hello world </p>
 <h1>{{$name}}</h1>
-<p>{{Auth::id()}}</p>
-<p>{{Auth::user()->name}}</p>
-<p>{{Auth::user()->email}}</p>
 <p>This is a register email. TO activate your account, click <a href="{{url('/activate/'.$user_id)}}">here</a></p>
 </body>
 </html>

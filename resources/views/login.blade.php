@@ -50,7 +50,7 @@
 
     </form>
     <div class="row">
-        <div class="col"> <a href="registration/register.php"> <button class="w-100 btn btn-lg btn-secondary">Register</button></a>
+        <div class="col"> <a href="{{url('/signUp/')}}"> <button class="w-100 btn btn-lg btn-secondary">Register</button></a>
         </div>
         <div class="col">
             <a href="google_login/google_login.php">
