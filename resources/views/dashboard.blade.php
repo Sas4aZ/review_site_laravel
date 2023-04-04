@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<p>Hello world </p>
+<p>Hello </p>
 <h1>{{$name}}</h1>
 <p>This is a register email. TO activate your account, click <a href="{{url('/activate/'.$user_id)}}">here</a></p>
 </body>

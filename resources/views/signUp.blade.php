@@ -9,13 +9,27 @@
     <script src="{{asset("assets/js/bootstrap.bundle.min.js")}} "></script>
 
 
-    <title>sign up</title>
+    <title>Sign up</title>
 </head>
 <body>
 
 <div class="b-example-divider"></div>
 <div class="row align-items-center">
     <div class="col-sm-7 mx-auto col-lg-7">
+        @if(session('status'))
+            <div class="alert alert-success">{{session('status')}}</div>
+
+        @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
         <form class="p-4 p-md-5 border rounded-3 bg-light row g-3 " action="{{action([\App\Http\Controllers\PagesController::class,'signUpForm'])}}" method="post" enctype="multipart/form-data">
            @csrf
@@ -107,7 +121,7 @@
                 <button type="submit" class="btn btn-primary">Sign in</button>
 
             </div>
-            <div class="col-md-6"><a href="google_login/google_login.php"> <button class="btn btn-secondary">Google login </button></a>
+            <div class="col-md-6"><a href="{{url('authorized/google')}}"> <button class="btn btn-secondary">Google login </button></a>
                 <a href="../index.php" <button type="button" class="btn btn-secondary">Already have an account? </button> </a></div>
 
 

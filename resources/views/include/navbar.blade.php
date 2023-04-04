@@ -8,7 +8,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{url("post")}}">Submit</a></li>
                 <!--                <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>-->
 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('logout')}}">Log out</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="">Log out</a></li>
             </ul>
         </div>
     </div>

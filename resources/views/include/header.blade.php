@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <link href="{{asset("assets/css/new_wala.css")}} " rel="stylesheet" />
     <script src="{{asset("assets/js/bootstrap.bundle.min.js")}} "></script>
     <title>Review My Review</title>
@@ -14,8 +15,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="{{url('show')}}">Posts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url("post")}}">Submit</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('review.index')}}">Posts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route("review.create")}}">Submit</a></li>
                     <!--                <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>-->
 
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('logout')}}">Log out</a></li>

@@ -8,9 +8,23 @@
 <div class="b-example-divider"></div>
 
 
-
 <div class="container col-xxl-8 px-4 py-5">
-    <form action="{{action([\App\Http\Controllers\PagesController::class,'review_post'])}}" method="post" enctype="multipart/form-data">
+
+    @if(session('status'))
+    <div class="alert alert-success">{{session('status')}}</div>
+
+    @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    <form action="{{route('review.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         Title of your review: <input type="text" class="form-control" placeholder="Enter title here" name="review_name"> <br>
         A sentence about your review : <input type="text"  class="form-control" placeholder="Your Foreword" name="review_foreword">

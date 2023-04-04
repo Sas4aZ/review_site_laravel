@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'google_id'
     ];
 
     /**
@@ -44,5 +45,8 @@ class User extends Authenticatable
 
     public function reviews(){
         return $this->hasMany('App\Models\Review','user_id');
+    }
+    public function comments() {
+        return $this->hasMany('App\Models\Review', 'user_id');
     }
 }

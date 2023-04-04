@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-return view('welcome');
+return view('login');
 });
 
 Route::get('/next', function () {
@@ -23,28 +23,30 @@ Route::get('/next', function () {
 });;
 
 Route::group(['middleware'=>'auth'],function(){
-    Route::get('/profile/{id}', [PagesController::class, 'profile']);
+    Route::get("show",[\App\Http\Controllers\PagesController::class,'review_show' ])
+        ->name("show");
+
+    Route::get("post",[\App\Http\Controllers\PagesController::class,'post' ]);
+    Route::get("view",[\App\Http\Controllers\PagesController::class,'view' ]);
+    Route::post("review_post",[\App\Http\Controllers\PagesController::class,'review_post' ]);
+
+    Route::resource('/review',\App\Http\Controllers\reviewcontroller::class);
+    Route::resource('/comments',\App\Http\Controllers\commentsController::class);
 
 });
 
-Route::get("/create",[\App\Http\Controllers\PagesController::class,'create' ]);
-Route::get("/hell",[\App\Http\Controllers\PagesController::class,'dashboard' ]);
-Route::post("/create",[\App\Http\Controllers\PagesController::class,'store' ]);
-Route::get("/list",[\App\Http\Controllers\PagesController::class,'list' ]);
-Route::get("/hello",[\App\Http\Controllers\PagesController::class,'new' ]);
-Route::get("/delete/{id}",[\App\Http\Controllers\PagesController::class,'delete' ]);
+
+//Route::get("/delete/{id}",[\App\Http\Controllers\PagesController::class,'delete' ]);
 Route::get("/activate/{id}",[\App\Http\Controllers\PagesController::class,'activateUser' ]);
-Route::get("edit/{id}",[\App\Http\Controllers\PagesController::class,'edit' ]);
-Route::post("update",[\App\Http\Controllers\PagesController::class,'update' ]);
 Route::get("signUp",[\App\Http\Controllers\PagesController::class,'signUp' ]);
 Route::post("signUpForm",[\App\Http\Controllers\PagesController::class,'signUpForm' ]);
 Route::get("login",[\App\Http\Controllers\PagesController::class,'login' ])->name('login');
-Route::get("test",[\App\Http\Controllers\PagesController::class,'test' ]);
-Route::get("post",[\App\Http\Controllers\PagesController::class,'post' ]);
-Route::post("review_post",[\App\Http\Controllers\PagesController::class,'review_post' ]);
 Route::post("loginForm",[\App\Http\Controllers\PagesController::class,'loginForm' ]);
-Route::get("show",[\App\Http\Controllers\PagesController::class,'review_show' ]);
 Route::get("logout",[\App\Http\Controllers\PagesController::class,'logout' ]);
+//google login routes
 
+Route::get('authorized/google', [\App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle']);
+Route::get('authorized/google/callback', [\App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback']);
+//Auth::routes();
 
 
